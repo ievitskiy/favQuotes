@@ -10,7 +10,7 @@ interface QuoteCardProps {
 const QuoteCard : React.FC < QuoteCardProps > = ({data}) => {
     const [isFavorite, setIsFavorite] = useState<Boolean>();
     let isEmpty = false;
-    const setFavorite = useEffect(() => {
+    useEffect(() => {
         let currentFavArray = window.localStorage.getItem('favArray')
         
         if (currentFavArray == null) {
@@ -65,8 +65,7 @@ const QuoteCard : React.FC < QuoteCardProps > = ({data}) => {
                         
 
                         <div className="text-zinc-500 w-full text-[10px] sm:text-sm font-semibold">
-                        {data
-                            ?.tags}
+                        {data?.tags.map((tag: string) => (<div className="mr-1"> {`${tag}`} </div>))}
                         </div>
 
                             <hr className="mt-1" />

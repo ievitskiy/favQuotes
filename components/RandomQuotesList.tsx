@@ -1,22 +1,21 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
-import {isEmpty} from 'lodash';
 import QuoteCard from "./QuoteCard";
 import {BiRefresh} from "react-icons/bi";
+import getRandom from "@/hooks/getRandom";
 
-interface QuoteListProps {
-    data : Record < string,
-    any > [];
-}
-
-const RandomQuotesList : React.FC < QuoteListProps > = ({data}) => {
-    if (isEmpty(data)) {
-        return null;
-    }
+const RandomQuotesList = () => {
     const [rotate, setRotate] = useState(false);
+    const [currentData, setCurrentData] =  useState<Record <string,any>[]>();
+
     const toggleRotate = useCallback(() => {
         setRotate((current) => !current);
     }, []);
+
+    useEffect(() => {
+        getRandom().then(res => (setCurrentData(res)))
+
+    }, [rotate])
 
     return (
         <div className="relative px-4 md:px-12 space-y-8 flex w-full justify-center">
@@ -34,7 +33,7 @@ const RandomQuotesList : React.FC < QuoteListProps > = ({data}) => {
                 </div>
                 
                 <div className="gap-2 flex flex-col">
-                    {data.map((quote) => (<QuoteCard key={quote._id} data={quote}/>))}
+                    {currentData?.map((quote) => (<QuoteCard key={quote._id} data={quote}/>))}
                 </div>
             </div>
         </div>

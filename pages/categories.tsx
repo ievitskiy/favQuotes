@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
-import RandomQuotesList from "@/components/RandomQuotesList";
+import QuotesByCategory from "@/components/QuotesByCategory";
 
 export default function Home() {
     return ( 
     <> 
     <Navbar/> 
-    <RandomQuotesList/>
+    <QuotesByCategory/>
     </>
   )
 }

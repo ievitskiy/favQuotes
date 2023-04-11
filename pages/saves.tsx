@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import LocalQuotesList from "@/components/LocalQuotesList";
-import getFavorites from "@/lib/getFavorites";
+import getFavorites from "@/hooks/getFavorites";
 import { useEffect, useState } from "react";
 import EmptyQuotesList from "@/components/EmptyQuotesList";
 import favoritesIsEmpty from "@/lib/favoritesIsEmpty";
